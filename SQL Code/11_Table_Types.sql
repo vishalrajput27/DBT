@@ -18,7 +18,7 @@ CREATE OR REPLACE TABLE PDB.public.helper (
   Job string,
   Phone string);
     
-// Stage and file format
+# Stage and file format
 CREATE OR REPLACE FILE FORMAT MANAGE_DB.file_formats.csv_file
     type = csv
     field_delimiter = ','
@@ -31,7 +31,7 @@ CREATE OR REPLACE STAGE MANAGE_DB.external_stages.time_travel_stage
 LIST  @MANAGE_DB.external_stages.time_travel_stage;
 
 
-// Copy data and insert in table
+--Copy data and insert in table
 COPY INTO PDB.public.helper
 FROM @MANAGE_DB.external_stages.time_travel_stage
 files = ('customers.csv');
@@ -39,7 +39,7 @@ files = ('customers.csv');
 
 SELECT * FROM PDB.public.helper;
 
-// Show table and validate
+-- Show table and validate
 SHOW TABLES;
 
 
@@ -114,7 +114,7 @@ SELECT t1.* FROM OUR_FIRST_DB.public.customers t1;
 SELECT * FROM PDB.public.customers;
 
 
-// Create second temporary table (with a new name)
+--Create second temporary table (with a new name)
 CREATE OR REPLACE TEMPORARY TABLE PDB.public.temp_table (
    id int,
    first_name string,
